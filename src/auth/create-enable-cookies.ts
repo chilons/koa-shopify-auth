@@ -374,7 +374,7 @@ export default function createEnableCookies({
     (function() {
       function setCookieAndRedirect() {
         document.cookie = "shopify.cookies_persist=true";
-        window.location.href = "/auth?shop=${shop}"
+        window.location.href = "${prefix}/auth?shop=${shop}"
       }
 
       function shouldDisplayPrompt() {
