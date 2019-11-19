@@ -1,0 +1,8 @@
+#!/bin/bash
+
+set -e
+
+echo -n 'Building... '
+(rm -r dist || true) 2>/dev/null
+npx tsc
+echo 'OK'
