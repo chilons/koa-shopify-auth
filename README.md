@@ -1,7 +1,6 @@
-# `@shopify/koa-shopify-auth`
+# `@cala/koa-shopify-auth`
 
-[![Build Status](https://travis-ci.org/Shopify/quilt.svg?branch=master)](https://travis-ci.org/Shopify/quilt)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE.md) [![npm version](https://badge.fury.io/js/%40shopify%2Fkoa-shopify-auth.svg)](https://badge.fury.io/js/%40shopify%2Fkoa-shopify-auth)
+Fork from [Shopify/quilt](https://github.com/Shopify/quilt).
 
 Middleware to authenticate a [Koa](http://koajs.com/) application with [Shopify](https://www.shopify.ca/).
 
@@ -12,7 +11,7 @@ Features you might know from the express module like the webhook middleware and 
 ## Installation
 
 ```bash
-$ yarn add @shopify/koa-shopify-auth
+$ npm i @cala/koa-shopify-auth
 ```
 
 ## Usage
@@ -20,7 +19,7 @@ $ yarn add @shopify/koa-shopify-auth
 This package exposes `shopifyAuth` by default, and `verifyRequest` as a named export.
 
 ```js
-import shopifyAuth, {verifyRequest} from '@shopify/koa-shopify-auth';
+import shopifyAuth, {verifyRequest} from '@cala/koa-shopify-auth';
 ```
 
 ### shopifyAuth
@@ -86,7 +85,7 @@ import 'isomorphic-fetch';
 
 import Koa from 'koa';
 import session from 'koa-session';
-import shopifyAuth, {verifyRequest} from '@shopify/koa-shopify-auth';
+import shopifyAuth, {verifyRequest} from '@cala/koa-shopify-auth';
 
 const {SHOPIFY_API_KEY, SHOPIFY_SECRET} = process.env;
 
