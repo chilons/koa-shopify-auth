@@ -1,11 +1,13 @@
 {
   "name": "@cala/koa-shopify-auth",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "license": "MIT",
   "description": "",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "author": "Shopify Inc.",
   "repository": {
     "type": "git",
