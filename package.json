@@ -5,6 +5,7 @@
   "description": "",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
+  "files": ["dist"],
   "author": "Shopify Inc.",
   "repository": {
     "type": "git",
