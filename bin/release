@@ -48,7 +48,7 @@ main() {
   git push --tags
   git push origin master
 
-  npm publish
+  npm publish --access=public
 }
 
 main "$@"
