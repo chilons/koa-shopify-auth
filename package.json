@@ -35,5 +35,8 @@
     "ts-jest": "^24.1.0",
     "typescript": "^3.7.2"
   },
-  "sideEffects": false
+  "sideEffects": false,
+  "scripts": {
+    "prepack": "tsc"
+  }
 }
