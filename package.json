@@ -37,6 +37,6 @@
   },
   "sideEffects": false,
   "scripts": {
-    "prepack": "tsc"
+    "postinstall": "tsc"
   }
 }
