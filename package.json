@@ -1,6 +1,6 @@
 {
   "name": "@wilonth/koa-shopify-auth",
-  "version": "4.0.2",
+  "version": "4.0.3-0",
   "license": "MIT",
   "description": "",
   "main": "dist/src/index.js",
