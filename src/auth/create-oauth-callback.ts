@@ -58,7 +58,7 @@ export default function createOAuthCallback(config: AuthConfig) {
     if (ctx.session) {
       ctx.session.shop = shop;
       ctx.session.accessToken = accessToken;
-      ctx.session.extra = JSON.stringify(accessTokenResponse.json());
+      ctx.session.extra = JSON.stringify(accessTokenData);
     }
 
     ctx.state.shopify = {

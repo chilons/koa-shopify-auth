@@ -11,7 +11,7 @@
   "author": "Shopify Inc.",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ca-la/koa-shopify-auth.git"
+    "url": "git+https://github.com/chilons/koa-shopify-auth.git"
   },
   "dependencies": {
     "@shopify/network": "^1.4.3",
