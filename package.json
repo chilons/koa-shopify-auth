@@ -37,6 +37,6 @@
   },
   "sideEffects": false,
   "scripts": {
-    "postinstall": "tsc"
+    "postinstall": "npm run tsc"
   }
 }
