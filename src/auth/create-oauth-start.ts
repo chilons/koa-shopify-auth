@@ -1,24 +1,24 @@
-import {Context} from 'koa';
+import { Context } from 'koa';
 
-import {OAuthStartOptions} from '../types';
+import { OAuthStartOptions } from '../types';
 
 import Error from './errors';
 import oAuthQueryString from './oauth-query-string';
 
-import {TOP_LEVEL_OAUTH_COOKIE_NAME} from './index';
+import { TOP_LEVEL_OAUTH_COOKIE_NAME } from './index';
 
 export default function createOAuthStart(
   options: OAuthStartOptions,
-  callbackPath: string,
+  callbackPath: string
 ) {
   return function oAuthStart(ctx: Context) {
-    const {myShopifyDomain} = options;
-    const {query} = ctx;
-    const {shop} = query;
+    const { myShopifyDomain } = options;
+    const { query } = ctx;
+    const { shop, accessMode } = query;
 
     const shopRegex = new RegExp(
       `^[a-z0-9][a-z0-9\\-]*[a-z0-9]\\.${myShopifyDomain}$`,
-      'i',
+      'i'
     );
 
     if (shop == null || !shopRegex.test(shop)) {
@@ -26,12 +26,16 @@ export default function createOAuthStart(
       return;
     }
 
+    if (accessMode && ['online', 'offline'].includes(accessMode)) {
+      options.accessMode = accessMode;
+    }
+
     ctx.cookies.set(TOP_LEVEL_OAUTH_COOKIE_NAME);
 
     const formattedQueryString = oAuthQueryString(ctx, options, callbackPath);
 
     ctx.redirect(
-      `https://${shop}/admin/oauth/authorize?${formattedQueryString}`,
+      `https://${shop}/admin/oauth/authorize?${formattedQueryString}`
     );
   };
 }

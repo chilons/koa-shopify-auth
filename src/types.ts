@@ -1,4 +1,4 @@
-import {Context} from 'koa';
+import { Context } from 'koa';
 
 export type AccessMode = 'online' | 'offline';
 

@@ -1,6 +1,6 @@
-import {Context} from 'koa';
+import { Context } from 'koa';
 
-import {OAuthStartOptions, AccessMode, NextFunction} from '../types';
+import { OAuthStartOptions, AccessMode, NextFunction } from '../types';
 
 import createOAuthStart from './create-oauth-start';
 import createOAuthCallback from './create-oauth-callback';
@@ -14,11 +14,11 @@ const DEFAULT_ACCESS_MODE: AccessMode = 'online';
 export const TOP_LEVEL_OAUTH_COOKIE_NAME = 'shopifyTopLevelOAuth';
 export const TEST_COOKIE_NAME = 'shopifyTestCookie';
 
-function hasCookieAccess({cookies}: Context) {
+function hasCookieAccess({ cookies }: Context) {
   return Boolean(cookies.get(TEST_COOKIE_NAME));
 }
 
-function shouldPerformInlineOAuth({cookies}: Context) {
+function shouldPerformInlineOAuth({ cookies }: Context) {
   return Boolean(cookies.get(TOP_LEVEL_OAUTH_COOKIE_NAME));
 }
 
@@ -28,10 +28,10 @@ export default function createShopifyAuth(options: OAuthStartOptions) {
     prefix: '',
     myShopifyDomain: DEFAULT_MYSHOPIFY_DOMAIN,
     accessMode: DEFAULT_ACCESS_MODE,
-    ...options,
+    ...options
   };
 
-  const {prefix} = config;
+  const { prefix } = config;
 
   const oAuthStartPath = `${prefix}/auth`;
   const oAuthCallbackPath = `${oAuthStartPath}/callback`;
@@ -79,5 +79,5 @@ export default function createShopifyAuth(options: OAuthStartOptions) {
   };
 }
 
-export {default as Error} from './errors';
-export {default as validateHMAC} from './validate-hmac';
+export { default as Error } from './errors';
+export { default as validateHMAC } from './validate-hmac';

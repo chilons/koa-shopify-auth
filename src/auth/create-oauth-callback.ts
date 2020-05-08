@@ -1,17 +1,17 @@
 import querystring from 'querystring';
 
-import {Context} from 'koa';
+import { Context } from 'koa';
 
-import {AuthConfig} from '../types';
+import { AuthConfig } from '../types';
 
 import Error from './errors';
 import validateHmac from './validate-hmac';
 
 export default function createOAuthCallback(config: AuthConfig) {
   return async function oAuthCallback(ctx: Context) {
-    const {query, cookies} = ctx;
-    const {code, hmac, shop, state: nonce} = query;
-    const {apiKey, secret, afterAuth} = config;
+    const { query, cookies } = ctx;
+    const { code, hmac, shop, state: nonce } = query;
+    const { apiKey, secret, afterAuth } = config;
 
     if (nonce == null || cookies.get('shopifyNonce') !== nonce) {
       ctx.throw(403, Error.NonceMatchFailed);
@@ -31,7 +31,7 @@ export default function createOAuthCallback(config: AuthConfig) {
     const accessTokenQuery = querystring.stringify({
       code,
       client_id: apiKey,
-      client_secret: secret,
+      client_secret: secret
     });
     /* eslint-enable @typescript-eslint/camelcase */
 
@@ -41,10 +41,10 @@ export default function createOAuthCallback(config: AuthConfig) {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
-          'Content-Length': Buffer.byteLength(accessTokenQuery).toString(),
+          'Content-Length': Buffer.byteLength(accessTokenQuery).toString()
         },
-        body: accessTokenQuery,
-      },
+        body: accessTokenQuery
+      }
     );
 
     if (!accessTokenResponse.ok) {
@@ -53,16 +53,17 @@ export default function createOAuthCallback(config: AuthConfig) {
     }
 
     const accessTokenData = await accessTokenResponse.json();
-    const {access_token: accessToken} = accessTokenData;
+    const { access_token: accessToken } = accessTokenData;
 
     if (ctx.session) {
       ctx.session.shop = shop;
       ctx.session.accessToken = accessToken;
+      ctx.session.extra = JSON.stringify(accessTokenResponse.json());
     }
 
     ctx.state.shopify = {
       shop,
-      accessToken,
+      accessToken
     };
 
     if (afterAuth) {
