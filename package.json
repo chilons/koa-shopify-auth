@@ -38,6 +38,7 @@
   },
   "sideEffects": false,
   "scripts": {
-    "postinstall": "./node_modules/typescript/bin/tsc"
+    "postinstall": "tsc",
+    "tsc": "tsc"
   }
 }
