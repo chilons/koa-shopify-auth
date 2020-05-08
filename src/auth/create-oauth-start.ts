@@ -14,6 +14,7 @@ export default function createOAuthStart(
   return function oAuthStart(ctx: Context) {
     const { myShopifyDomain } = options;
     const { query } = ctx;
+    console.log(':::', query);
     const { shop, accessMode } = query;
 
     const shopRegex = new RegExp(
@@ -30,6 +31,8 @@ export default function createOAuthStart(
     if (accessMode && ['online', 'offline'].includes(accessMode)) {
       authOptions = { ...options, accessMode };
     }
+
+    console.log(':::2', authOptions);
 
     ctx.cookies.set(TOP_LEVEL_OAUTH_COOKIE_NAME);
 
