@@ -30,7 +30,5 @@ export default function oAuthQueryString(
   if (accessMode === 'online') {
     redirectParams['grant_options[]'] = 'per-user';
   }
-
-  console.log('^^^ query: ', querystring.stringify(redirectParams));
   return querystring.stringify(redirectParams);
 }

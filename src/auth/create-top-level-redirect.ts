@@ -8,7 +8,6 @@ export default function createTopLevelRedirect(path: string) {
   return function topLevelRedirect(ctx: Context) {
     const { host, query } = ctx;
     const { shop, accessMode } = query;
-    console.log('&&&', query);
 
     const params = { shop, accessMode };
     const queryString = querystring.stringify(params);
