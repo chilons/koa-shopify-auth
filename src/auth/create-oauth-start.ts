@@ -26,13 +26,18 @@ export default function createOAuthStart(
       return;
     }
 
+    let authOptions = options;
     if (accessMode && ['online', 'offline'].includes(accessMode)) {
-      options.accessMode = accessMode;
+      authOptions = { ...options, accessMode };
     }
 
     ctx.cookies.set(TOP_LEVEL_OAUTH_COOKIE_NAME);
 
-    const formattedQueryString = oAuthQueryString(ctx, options, callbackPath);
+    const formattedQueryString = oAuthQueryString(
+      ctx,
+      authOptions,
+      callbackPath
+    );
 
     ctx.redirect(
       `https://${shop}/admin/oauth/authorize?${formattedQueryString}`
